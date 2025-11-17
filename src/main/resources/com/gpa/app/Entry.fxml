@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -14,8 +15,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gpa.app.controller.EntryController">
    <top>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -71,7 +72,7 @@
                         <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                      </padding>
                   </Label>
-                  <Label text="Teacher 1 Name" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Label text="Teacher 2 Name" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -79,12 +80,12 @@
                         <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                      </padding>
                   </Label>
-                  <TextField GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField GridPane.columnIndex="3" />
-                  <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <TextField fx:id="courseNameField" GridPane.columnIndex="1" />
+                  <TextField fx:id="courseCreditField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="teacher1Field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="courseCodeField" GridPane.columnIndex="3" />
+                  <TextField fx:id="teacher2Field" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="gradeComboBox" prefHeight="26.0" prefWidth="194.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -93,15 +94,25 @@
                   <Insets left="5.0" right="5.0" />
                </padding>
             </GridPane>
+            <Label fx:id="validationLabel" style="-fx-text-fill: red" text="">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
             <HBox alignment="TOP_CENTER" prefHeight="51.0" prefWidth="590.0">
                <children>
-                  <Button mnemonicParsing="false" text="Add" />
+                  <Button mnemonicParsing="false" text="Add" onAction="#addCourse" />
+                  <Label fx:id="creditSummaryLabel" text="Credits: 0.0 / 25 credit acquired">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
                <padding>
                   <Insets top="10.0" />
                </padding>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets />
                </VBox.margin>
             </HBox>
          </children>
@@ -118,24 +129,35 @@
                   <Insets bottom="5.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <TableView>
-              <columns>
-                <TableColumn minWidth="-1.0" prefWidth="200.0" text="Course Name" />
-                <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Course Name" />
-                  <TableColumn prefWidth="75.0" text="Code" />
-                  <TableColumn prefWidth="75.0" text="Credit" />
-                  <TableColumn prefWidth="75.0" text="Grade" />
-                  <TableColumn prefWidth="180.0" text="Teacher 1" />
-                  <TableColumn prefWidth="180.0" text="Teacher 2" />
-              </columns>
-            </TableView>
+             <TableView fx:id="courseTable" VBox.vgrow="ALWAYS">
+                 <columns>
+                     <TableColumn text="Course Name" prefWidth="180.0">
+                         <cellValueFactory><PropertyValueFactory property="courseName" /></cellValueFactory>
+                     </TableColumn>
+                     <TableColumn text="Code" prefWidth="80.0">
+                         <cellValueFactory><PropertyValueFactory property="courseCode" /></cellValueFactory>
+                     </TableColumn>
+                     <TableColumn text="Credit" prefWidth="60.0">
+                         <cellValueFactory><PropertyValueFactory property="courseCredit" /></cellValueFactory>
+                     </TableColumn>
+                     <TableColumn text="Grade" prefWidth="60.0">
+                         <cellValueFactory><PropertyValueFactory property="grade" /></cellValueFactory>
+                     </TableColumn>
+                     <TableColumn text="Teacher 1" prefWidth="150.0">
+                         <cellValueFactory><PropertyValueFactory property="teacher1Name" /></cellValueFactory>
+                     </TableColumn>
+                     <TableColumn text="Teacher 2" prefWidth="150.0">
+                         <cellValueFactory><PropertyValueFactory property="teacher2Name" /></cellValueFactory>
+                     </TableColumn>
+                 </columns>
+             </TableView>
          </children>
       </VBox>
    </center>
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" text="CALCULATE" />
+            <Button fx:id="calculateGpaButton" alignment="CENTER" mnemonicParsing="false" onAction="#calculateGPA" text="CALCULATE" />
          </children>
       </HBox>
    </bottom>

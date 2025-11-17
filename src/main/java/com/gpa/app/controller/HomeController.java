@@ -13,19 +13,23 @@ import java.io.IOException;
 
 public class HomeController {
     @FXML private TextField totalCreditNumber;
-    @FXML private Label welcomeText;
+    //@FXML private Label welcomeText;
 
     @FXML
     public void startCalculator(ActionEvent event) throws IOException {
-        //welcomeText.setText("Welcome to Sufian's CGPA Calculator!");
+
+        String creditValue = totalCreditNumber.getText().trim();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/gpa/app/Entry.fxml"));
         Scene entryScene = new Scene(fxmlLoader.load());
+
+        EntryController entryController = fxmlLoader.getController();
+        entryController.initData(creditValue); // ONLY this!
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(entryScene);
         stage.setTitle("CGPA Calculator - Course Entry");
         stage.show();
-
     }
 
 

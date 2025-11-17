@@ -10,8 +10,11 @@ module com.gpa.app {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires javafx.base;
+    requires javafx.graphics;
 
     opens com.gpa.app to javafx.fxml;
+    opens com.gpa.app.model to javafx.base;
     exports com.gpa.app;
     exports com.gpa.app.controller;
     opens com.gpa.app.controller to javafx.fxml;
