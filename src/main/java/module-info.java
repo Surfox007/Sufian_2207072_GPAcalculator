@@ -1,4 +1,4 @@
-module com.example.gpacalculatorproject {
+module com.gpa.app {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -11,6 +11,8 @@ module com.example.gpacalculatorproject {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens com.example.gpacalculatorproject to javafx.fxml;
-    exports com.example.gpacalculatorproject;
+    opens com.gpa.app to javafx.fxml;
+    exports com.gpa.app;
+    exports com.gpa.app.controller;
+    opens com.gpa.app.controller to javafx.fxml;
 }
