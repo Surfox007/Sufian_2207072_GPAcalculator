@@ -1,0 +1,39 @@
+.root {
+    -fx-background-color: #f7f9fc;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-alignment: center;
+}
+
+
+#welcomeText {
+    -fx-font-size: 24pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: #34495e; /* Dark gray */
+    -fx-padding: 0 0 10px 0;
+}
+
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 4;
+    -fx-border-width: 1;
+    -fx-padding: 5px;
+}
+
+
+.button {
+    -fx-background-color: #3498db; /* light blue */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 30px;
+    -fx-background-radius: 8;
+    -fx-font-size: 1.1em;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0.0, 0, 0);
+}
+
+.button:hover {
+    -fx-background-color: #2980b9; /* Darker blue on hover */
+}

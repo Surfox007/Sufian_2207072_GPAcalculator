@@ -12,6 +12,8 @@ public class MainApp extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("Home.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        String cssPath = getClass().getResource("/com/gpa/app/home_style.css").toExternalForm();
+        scene.getStylesheets().add(cssPath);
         stage.setTitle("CGPA Calculator");
         stage.setScene(scene);
         stage.show();
