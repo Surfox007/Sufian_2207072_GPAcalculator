@@ -100,6 +100,8 @@ public class EntryController {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("Result.fxml"));
         Scene resultScene = new Scene(fxmlLoader.load());
 
+
+
         //Pass data to the ResultController
         ResultController resultController = fxmlLoader.getController();
         resultController.initData(courseList);
@@ -107,6 +109,9 @@ public class EntryController {
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(resultScene);
+
+
+
         stage.setTitle("GPA Calculator - Results");
         stage.show();
     }

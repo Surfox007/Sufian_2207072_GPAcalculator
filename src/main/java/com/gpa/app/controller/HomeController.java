@@ -23,8 +23,12 @@ public class HomeController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/gpa/app/Entry.fxml"));
         Scene entryScene = new Scene(fxmlLoader.load());
 
+        String cssPath = getClass().getResource("/com/gpa/app/entry_style.css").toExternalForm();
+
+        entryScene.getStylesheets().add(cssPath);
+
         EntryController entryController = fxmlLoader.getController();
-        entryController.initData(creditValue); // ONLY this!
+        entryController.initData(creditValue);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(entryScene);
