@@ -13,7 +13,6 @@ public class ResultController {
     @FXML private TableView<Course> resultTable;
 
 
-    //receive the course list data from EntryController, calculate the GPA, and update the display.
     public void initData(ObservableList<Course> courses) {
         if (courses == null || courses.isEmpty()) {
             gpaResultLabel.setText("N/A");
