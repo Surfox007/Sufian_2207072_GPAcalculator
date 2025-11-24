@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class HomeController {
     @FXML private TextField totalCreditNumber;
-    //@FXML private Label welcomeText;
+
 
     @FXML
     public void startCalculator(ActionEvent event) throws IOException {
