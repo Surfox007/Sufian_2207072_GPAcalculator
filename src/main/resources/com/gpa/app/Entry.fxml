@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -15,17 +16,52 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gpa.app.controller.EntryController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gpa.app.controller.EntryController">
    <top>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="BOTTOM_CENTER" prefHeight="286.0" prefWidth="790.0" BorderPane.alignment="CENTER">
          <children>
+            <HBox prefHeight="46.0" prefWidth="790.0">
+               <children>
+                  <GridPane prefHeight="46.0" prefWidth="867.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Student Name">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Student Roll" GridPane.columnIndex="2">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="studentNameField" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="studentRollField" prefHeight="26.0" prefWidth="211.0" GridPane.columnIndex="3">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                     </children>
+                  </GridPane>
+               </children></HBox>
             <Label text="Course Entry">
                <font>
                   <Font size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="5.0" top="10.0" />
+                  <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
             </Label>
             <GridPane>
@@ -94,23 +130,16 @@
                   <Insets left="5.0" right="5.0" />
                </padding>
             </GridPane>
-            <Label fx:id="validationLabel" style="-fx-text-fill: red" text="">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Label>
-            <HBox alignment="TOP_CENTER" prefHeight="51.0" prefWidth="590.0">
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="590.0">
                <children>
-                  <Button mnemonicParsing="false" text="Add" onAction="#addCourse" />
+                  <Button mnemonicParsing="false" onAction="#addCourse" text="Add" />
                   <Label fx:id="creditSummaryLabel" text="Credits: 0.0 / 25 credit acquired">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </Label>
+                  <Label fx:id="validationLabel" style="-fx-text-fill: red" text="" />
                </children>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -119,9 +148,9 @@
       </VBox>
    </top>
    <center>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_CENTER">
+      <VBox alignment="BOTTOM_CENTER" prefHeight="496.0" prefWidth="790.0" BorderPane.alignment="BOTTOM_CENTER">
          <children>
-            <Label alignment="CENTER" text="Entered Courses">
+            <Label alignment="CENTER" prefHeight="12.0" prefWidth="130.0" text="Entered Courses">
                <font>
                   <Font size="18.0" />
                </font>
@@ -129,24 +158,24 @@
                   <Insets bottom="5.0" top="10.0" />
                </VBox.margin>
             </Label>
-             <TableView fx:id="courseTable" VBox.vgrow="ALWAYS">
+             <TableView fx:id="courseTable" maxHeight="-Infinity" prefHeight="421.0" prefWidth="790.0" VBox.vgrow="ALWAYS">
                  <columns>
-                     <TableColumn text="Course Name" prefWidth="180.0">
+                     <TableColumn prefWidth="180.0" text="Course Name">
                          <cellValueFactory><PropertyValueFactory property="courseName" /></cellValueFactory>
                      </TableColumn>
-                     <TableColumn text="Code" prefWidth="80.0">
+                     <TableColumn prefWidth="80.0" text="Code">
                          <cellValueFactory><PropertyValueFactory property="courseCode" /></cellValueFactory>
                      </TableColumn>
-                     <TableColumn text="Credit" prefWidth="60.0">
+                     <TableColumn prefWidth="60.0" text="Credit">
                          <cellValueFactory><PropertyValueFactory property="courseCredit" /></cellValueFactory>
                      </TableColumn>
-                     <TableColumn text="Grade" prefWidth="60.0">
+                     <TableColumn prefWidth="60.0" text="Grade">
                          <cellValueFactory><PropertyValueFactory property="grade" /></cellValueFactory>
                      </TableColumn>
-                     <TableColumn text="Teacher 1" prefWidth="150.0">
+                     <TableColumn prefWidth="150.0" text="Teacher 1">
                          <cellValueFactory><PropertyValueFactory property="teacher1Name" /></cellValueFactory>
                      </TableColumn>
-                     <TableColumn text="Teacher 2" prefWidth="150.0">
+                     <TableColumn prefWidth="150.0" text="Teacher 2">
                          <cellValueFactory><PropertyValueFactory property="teacher2Name" /></cellValueFactory>
                      </TableColumn>
                  </columns>
@@ -155,7 +184,7 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="32.0" prefWidth="790.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="calculateGpaButton" alignment="CENTER" mnemonicParsing="false" onAction="#calculateGPA" text="CALCULATE" />
          </children>

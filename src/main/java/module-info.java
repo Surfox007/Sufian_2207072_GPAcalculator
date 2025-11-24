@@ -12,6 +12,8 @@ module com.gpa.app {
     requires com.almasb.fxgl.all;
     requires javafx.base;
     requires javafx.graphics;
+    requires java.sql;
+    requires java.desktop;
 
     opens com.gpa.app to javafx.fxml;
     opens com.gpa.app.model to javafx.base;
