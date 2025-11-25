@@ -9,10 +9,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Singleton service class to handle all database operations (CRUD) for Students,
- * GPA Entries, and Course Records using SQLite.
- */
 public class DatabaseService {
 
     private static DatabaseService instance;

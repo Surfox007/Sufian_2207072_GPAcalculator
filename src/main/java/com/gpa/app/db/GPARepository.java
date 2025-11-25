@@ -27,6 +27,7 @@ public class GPARepository {
         }
     }
 
+
     public static List<Student> getAllStudents() throws SQLException {
         return db.getAllStudents();
     }
@@ -36,9 +37,16 @@ public class GPARepository {
         db.deleteLatestGpaEntryByStudentId(studentId);
     }
 
+
     public static boolean deleteStudent(int studentId) {
-        return db.deleteStudent(studentId);
+        try {
+            return db.deleteStudent(studentId);
+        } catch (Exception e) {
+            System.err.println("GPARepository: Failed to delete student record. Error: " + e.getMessage());
+            return false;
+        }
     }
+
 
     public static List<Course> getLatestGpaEntryWithCourses(int studentId) throws SQLException {
 
@@ -47,6 +55,7 @@ public class GPARepository {
         if (entries.isEmpty()) {
             return List.of();
         }
+
 
         int latestEntryId = entries.get(0).getEntryId();
 
@@ -60,7 +69,7 @@ public class GPARepository {
         if (entries.isEmpty()) {
             return 0.0;
         }
-
+        // Return the GPA value of the latest entry
         return entries.get(0).getGpaValue();
     }
 }
